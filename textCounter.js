@@ -32,6 +32,7 @@ function handleCounters() {
     if(textArea.value === "") {
         charCounter.textContent = 0;
         wordCounter.textContent = 0;
+        sentenceCounter.textContent = 0;
         paragraphCounter.textContent = 0;
         pageCounter.textContent = 0;
         lineCounter.textContent = 0;
