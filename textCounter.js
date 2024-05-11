@@ -26,7 +26,22 @@ let wordStorage = [];
 let counter = 0;
 
 textArea.addEventListener("input", updateCounters);
+textArea.addEventListener("blur", handleCounters);
 
+function handleCounters() {
+    if(textArea.value === "") {
+        charCounter.textContent = 0;
+        wordCounter.textContent = 0;
+        paragraphCounter.textContent = 0;
+        pageCounter.textContent = 0;
+        lineCounter.textContent = 0;
+        spaceCounter.textContent = 0;
+        updateCounters();
+    }
+    else {
+        console.log("Not empty");
+    }
+}
 
 function updateCounters() {
     if(textArea.value === "") {
