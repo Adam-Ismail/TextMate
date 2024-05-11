@@ -26,16 +26,6 @@ let wordStorage = [];
 let counter = 0;
 
 textArea.addEventListener("input", updateCounters);
-textArea.addEventListener("focus", () => {
-    updateCounters();
-    frequency(textArea.value);
-});
-textArea.addEventListener("blur", () => {
-    updateCounters();
-    frequency(textArea.value);
-});
-
-
 
 
 function updateCounters() {
@@ -99,7 +89,16 @@ function frequency(words) {
     });
 }
 
-frequency(textArea.value);
+
+function update(row) {
+    if(row && row.parentNode) { 
+        row.parentNode.removeChild(row);
+        console.log("Row removed:", row);
+    } else {
+        console.log("Row not found or parent node not available");
+    }
+}
+
 
 
 
@@ -123,6 +122,13 @@ function countWhiteSpaces(text) {
 
 
 
+document.querySelector(".frequecyBtn").onclick = () => {
+    const table = document.querySelector(".keywords-table");
+    const rows = table.querySelectorAll(".row");
+    rows.forEach(row => update(row)); 
+    frequency(textArea.value);
+}
+
 document.querySelector(".refresh").onclick = () => {
     window.location.reload();
 }
@@ -130,3 +136,6 @@ document.querySelector(".clear").onclick = () => {
     textArea.value = '';
     window.location.reload();
 }
+
+
+
